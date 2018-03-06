@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit task details:</h1>
+    <form action="/edittask/" method="post">
+        {% csrf_token %}
+        <p></p>
+        Tasks: <input type="text" name="tasks" placeholder="{{task.name}}">
+        <p></p>
+        Status:
+        <select>
+            <option value="done">Done</option>
+            <option value="pending">Pending</option>
+            <option value="missed">Missed</option>
+        </select>
+        <p></p>
+        Date: <input type="date" name="date" placeholder="Date">
+        <p></p>
+        Time: <input type="time" name="time" placeholder="Time">
+        <p></p>
+        <input type="submit" value="Edit">
+    </form>
+    
+</body>
+</html>

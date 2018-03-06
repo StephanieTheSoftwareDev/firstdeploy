@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello, {{user.name}}!</h1>
+    <h3>Here are your appointments for today, {{nownownow}} </h3>
+    <table>
+        <tr>
+            <th>Tasks</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        {% for task in tasks.all %}
+        <tr>
+            <td>{{task.id}}</td>
+            <td>{{task.task_name}}</td>
+            <td>{{task.task_time}}</td>
+            <td>{{task.task_status}}</td>
+            <td><a href="http://127.0.0.1:8000/edit/{{task.id}}">Edit</a> <a href="http://127.0.0.1:8000/delete/{{task.id}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <table>
+        <tr>
+            <th>Tasks</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+            {% for task in tasks.all %}
+        <tr>
+            <td>{{task.id}}</td>
+            <td>{{task.task_name}}</td>
+            <td>{{task.task_time}}</td>
+            <td>{{task.task_status}}</td>
+            <td><a href="http://127.0.0.1:8000/edit/{{task.id}}">Edit</a> <a href="http://127.0.0.1:8000/delete/{{task.id}}">Delete</a></td>
+        </tr>
+            {% endfor %}
+    </table>
+        <h1>Add a Task</h1>
+    <form action="/addtask/" method="post">
+        {% csrf_token %}
+        <p></p>
+        Date: <input type="date" name="taskdate" min="2018-03-05" max="2029-03-05">
+        <p></p>
+        Time: <input type="time" name="tasktime">
+        <p></p>
+        Tasks: <input type="text" name="taskname" placeholder="The stuff you wanna do..">
+        <p></p>
+        <input type="submit" value="Add">
+    </form>
+    <a href="http://127.0.0.1:8000/logout/">Logout</a>
+</body>
+</html>

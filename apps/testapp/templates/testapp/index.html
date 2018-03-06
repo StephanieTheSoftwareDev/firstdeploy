@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Registration</h1>
+    {% if messages %}
+    <ul class="messagelist">{% for message in messages %}<li>{{ message }}</li>{% endfor %}</ul>
+    {% endif %}
+    <form action="/reg/" method="post">
+        {% csrf_token %}
+        <p></p>
+        First name: <input type="text" name="name" placeholder="What's your first name?">
+        <p></p>
+        Birthdate: <input type="date" name="birthdate" min="03-05-1898" max="03-04-2018">
+        <p></p>
+        Email: <input type="text" name="email" placeholder="What's your email address?">
+        <p></p>
+        Password: <input type="text" name="pw" placeholder="At least 8 characters">
+        <p></p>
+        Confirm pw: <input type="text" name="confpw" placeholder="Make sure it matches!">
+        <p></p>
+        
+        <input type="submit" value="Register">
+    </form>
+    <h1>Login</h1>
+    <form action="/login/" method="post">
+        {% csrf_token %}
+        <p></p>
+        Email: <input type="text" name="email" placeholder="The email you used to create your account">
+        <p></p>
+        Password: <input type="text" name="pw" placeholder="The password you used to create your account">
+        <p></p>
+        <input type="submit" value="Login">
+    </form>
+    
+</body>
+</html>
